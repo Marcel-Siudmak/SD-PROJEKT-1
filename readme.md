@@ -1,37 +1,71 @@
-# Struktura Projektu - Miniprojekt 1 (Listy)
+# Miniprojekt 1 - Struktury Danych
 
 Projekt realizuje własną implementację wybranych struktur danych w języku C++ oraz moduł badawczy do analizy ich złożoności czasowej. Program opiera się na paradygmacie obiektowym z wykorzystaniem interfejsów (szablonów) i jest podzielony na pliki nagłówkowe (`*.hpp`) oraz źródłowe (`*.cpp`). Podstawowym typem danych w strukturach jest 4-bajtowa liczba całkowita.
 
-## 1. Drzewo Projektu
+## Spis treści
+* [Wymagania](#1-wymagania)
+* [Kompilacja i uruchomienie](#2-kompilacja-i-uruchomienie)
+* [Struktura Projektu](#3-struktura-projektu)
+* [Szczegółowy Opis Plików i Modułów](#4-szczegółowy-opis-plików-i-modułów)
+
+## 1. Wymagania
+* **Kompilator:** GCC 15+ / Clang 17+ (wymagane wsparcie dla C++20)
+* **System budowania:** CMake 3.10+
+* **System operacyjny:** macOS / Windows / Linux
+
+## 2. Kompilacja i uruchomienie
+Aby zbudować projekt, wykonaj poniższe kroki w terminalu:
+
+1. Stwórz folder budowania:
+   ```bash
+   mkdir build && cd build
+   ```
+
+2. Skonfiguruj projekt za pomocą CMake:
+   ```bash
+   cmake ..
+   ```
+
+3. Skompiluj:
+   ```bash
+   cmake --build .
+   ```
+
+4. Uruchom program:
+   ```bash
+   ./mini_projekt_1
+   ```
+
+## 3. Struktura Projektu
 
 ```text
 ├── src/
-│   ├── main.cpp
-│   ├── IList.hpp
-│   ├── ArrayList.hpp
-│   ├── ArrayList.cpp
-│   ├── SinglyLinkedList.hpp
-│   ├── SinglyLinkedList.cpp
-│   ├── DoublyLinkedList.hpp
-│   ├── DoublyLinkedList.cpp
-│   ├── Menu.hpp
-│   ├── Menu.cpp
-│   ├── Benchmark.hpp
-│   ├── Benchmark.cpp
-│   ├── DataHandler.hpp
-│   └── DataHandler.cpp
+│   ├── * [main.cpp] - Główny plik programu
+│   ├── * [IList.hpp] - Abstrakcyjna klasa bazowa (interfejs)
+│   ├── * [ArrayList.hpp] - Implementacja tablicy dynamicznej
+│   ├── * [ArrayList.cpp] - Implementacja tablicy dynamicznej
+│   ├── * [SinglyLinkedList.hpp] - Implementacja listy jednokierunkowej
+│   ├── * [SinglyLinkedList.cpp] - Implementacja listy jednokierunkowej
+│   ├── * [DoublyLinkedList.hpp] - Implementacja listy dwukierunkowej
+│   ├── * [DoublyLinkedList.cpp] - Implementacja listy dwukierunkowej
+│   ├── * [Menu.hpp] - Menu aplikacji
+│   ├── * [Menu.cpp] - Menu aplikacji
+│   ├── * [Benchmark.hpp] - Narzędzie do pomiaru wydajności
+│   ├── * [Benchmark.cpp] - Narzędzie do pomiaru wydajności
+│   ├── * [DataHandler.hpp] - Narzędzie do generowania i wczytywania danych
+│   └── * [DataHandler.cpp] - Narzędzie do generowania i wczytywania danych
 ├── data/
-│   ├── random_data_5000.txt
-│   ├── random_data_10000.txt
+│   ├── * [random_data_5000.txt] - Plik z danymi testowymi
+│   ├── * [random_data_10000.txt] - Plik z danymi testowymi
 │   └── ... 
 ├── build/
-│   ├── binary
+│   ├── * [binary] - Plik wykonywalny
 │   └── ...
-├── CMakeLists.txt
-└── README.md
+├── * [CMakeLists.txt] - Plik konfiguracyjny CMake
+└── * [README.md] - Plik README
 ```
 
-## 2. Szczegółowy Opis Plików i Modułów
+## 4. Szczegółowy Opis Plików i Modułów
 
 ### A. Abstrakcja i Interfejsy
 `IList.hpp` Abstrakcyjna klasa bazowa (interfejs) wykorzystująca szablony (template). Definiuje wirtualne metody wspólne dla wszystkich badanych struktur: dodawanie i usuwanie (początek, koniec, losowe miejsce), wyszukiwanie elementu oraz metody pomocnicze (wyświetlanie, czyszczenie struktury, pobieranie rozmiaru).
