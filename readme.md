@@ -40,29 +40,29 @@ Aby zbudować projekt, wykonaj poniższe kroki w terminalu:
 
 ```text
 ├── src/
-│   ├── * [main.cpp] - Główny plik programu
-│   ├── * [IList.hpp] - Abstrakcyjna klasa bazowa (interfejs)
-│   ├── * [ArrayList.hpp] - Implementacja tablicy dynamicznej
-│   ├── * [ArrayList.cpp] - Implementacja tablicy dynamicznej
-│   ├── * [SinglyLinkedList.hpp] - Implementacja listy jednokierunkowej
-│   ├── * [SinglyLinkedList.cpp] - Implementacja listy jednokierunkowej
-│   ├── * [DoublyLinkedList.hpp] - Implementacja listy dwukierunkowej
-│   ├── * [DoublyLinkedList.cpp] - Implementacja listy dwukierunkowej
-│   ├── * [Menu.hpp] - Menu aplikacji
-│   ├── * [Menu.cpp] - Menu aplikacji
-│   ├── * [Benchmark.hpp] - Narzędzie do pomiaru wydajności
-│   ├── * [Benchmark.cpp] - Narzędzie do pomiaru wydajności
-│   ├── * [DataHandler.hpp] - Narzędzie do generowania i wczytywania danych
-│   └── * [DataHandler.cpp] - Narzędzie do generowania i wczytywania danych
+│   ├── `main.cpp` - Główny plik programu
+│   ├── `IList.hpp` - Abstrakcyjna klasa bazowa (interfejs)
+│   ├── `ArrayList.hpp` - Implementacja tablicy dynamicznej
+│   ├── `ArrayList.cpp` - Implementacja tablicy dynamicznej
+│   ├── `SinglyLinkedList.hpp` - Implementacja listy jednokierunkowej
+│   ├── `SinglyLinkedList.cpp` - Implementacja listy jednokierunkowej
+│   ├── `DoublyLinkedList.hpp` - Implementacja listy dwukierunkowej
+│   ├── `DoublyLinkedList.cpp` - Implementacja listy dwukierunkowej
+│   ├── `Menu.hpp` - Menu aplikacji
+│   ├── `Menu.cpp` - Menu aplikacji
+│   ├── `Benchmark.hpp` - Narzędzie do pomiaru wydajności
+│   ├── `Benchmark.cpp` - Narzędzie do pomiaru wydajności
+│   ├── `DataHandler.hpp` - Narzędzie do generowania i wczytywania danych
+│   └── `DataHandler.cpp` - Narzędzie do generowania i wczytywania danych
 ├── data/
-│   ├── * [random_data_5000.txt] - Plik z danymi testowymi
-│   ├── * [random_data_10000.txt] - Plik z danymi testowymi
+│   ├── `random_data_5000.txt` - Plik z danymi testowymi
+│   ├── `random_data_10000.txt` - Plik z danymi testowymi
 │   └── ... 
 ├── build/
-│   ├── * [binary] - Plik wykonywalny
+│   ├── `binary` - Plik wykonywalny
 │   └── ...
-├── * [CMakeLists.txt] - Plik konfiguracyjny CMake
-└── * [README.md] - Plik README
+├── `CMakeLists.txt` - Plik konfiguracyjny CMake
+└── `README.md` - Plik README
 ```
 
 ## 4. Szczegółowy Opis Plików i Modułów
