@@ -24,6 +24,10 @@ Projekt realizuje własną implementację wybranych struktur danych w języku C+
 │   ├── random_data_5000.txt
 │   ├── random_data_10000.txt
 │   └── ... 
+├── build/
+│   ├── binary
+│   └── ...
+├── CMakeLists.txt
 └── README.md
 ```
 
