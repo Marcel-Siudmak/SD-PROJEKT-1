@@ -64,8 +64,8 @@ template <typename T> void doubly_linked_list<T>::insert(T value, int index) {
       temp->prev->next = new_node;
       temp->prev = new_node;
     }
+    size++;
   }
-  size++;
 }
 
 template <typename T> void doubly_linked_list<T>::pop_front() {
@@ -74,7 +74,11 @@ template <typename T> void doubly_linked_list<T>::pop_front() {
 
   doubly_node<T> *temp = head;
   head = head->next;
-  head->prev = nullptr;
+  
+  if (head != nullptr) {
+    head->prev = nullptr;
+  }
+  
   delete temp;
   size--;
 
@@ -88,7 +92,11 @@ template <typename T> void doubly_linked_list<T>::pop_back() {
 
   doubly_node<T> *temp = tail;
   tail = tail->prev;
-  tail->next = nullptr;
+  
+  if (tail != nullptr) {
+    tail->next = nullptr;
+  }
+  
   delete temp;
   size--;
 
@@ -117,7 +125,7 @@ template <typename T> void doubly_linked_list<T>::remove(int index) {
       delete to_delete;
     } else {
       doubly_node<T> *temp = tail;
-      for (int i = size - 1; i > index; i--)
+      for (int i = size - 1; i > index + 1; i--)
         temp = temp->prev;
 
       doubly_node<T> *to_delete = temp->prev;
@@ -125,8 +133,8 @@ template <typename T> void doubly_linked_list<T>::remove(int index) {
       to_delete->prev->next = temp;
       delete to_delete;
     }
+    size--;
   }
-  size--;
 }
 
 template <typename T> bool doubly_linked_list<T>::find(T value) {
