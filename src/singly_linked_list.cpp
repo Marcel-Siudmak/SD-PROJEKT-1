@@ -7,9 +7,7 @@ template <typename T> singly_linked_list<T>::singly_linked_list() {
   size = 0;
 }
 
-template <typename T> singly_linked_list<T>::~singly_linked_list() {
-  clear(); // Zwalniamy pamięć przy zniszczeniu obiektu
-}
+template <typename T> singly_linked_list<T>::~singly_linked_list() { clear(); }
 
 template <typename T> void singly_linked_list<T>::push_front(T value) {
   singly_node<T> *new_node = new singly_node<T>(value);
