@@ -20,5 +20,5 @@ public:
   // Metody pomocnicze przydatne w menu
   virtual void display() = 0;
   virtual void clear() = 0; // Do czyszczenia przed wczytaniem z pliku
-  virtual int getSize() = 0;
+  virtual int get_size() = 0;
 };
