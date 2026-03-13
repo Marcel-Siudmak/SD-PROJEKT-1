@@ -33,7 +33,7 @@ template <typename T> void singly_linked_list<T>::push_back(T value) {
 
 template <typename T> void singly_linked_list<T>::insert(T value, int index) {
   if (index < 0 || index > size)
-    return; // Zabezpieczenie
+    return;
 
   if (index == 0) {
     push_front(value);
@@ -43,9 +43,9 @@ template <typename T> void singly_linked_list<T>::insert(T value, int index) {
     singly_node<T> *new_node = new singly_node<T>(value);
     singly_node<T> *temp = head;
     // Przechodzimy do elementu przed miejscem wstawienia
-    for (int i = 0; i < index - 1; i++) {
+    for (int i = 0; i < index - 1; i++)
       temp = temp->next;
-    }
+
     new_node->next = temp->next;
     temp->next = new_node;
     size++;
@@ -96,9 +96,9 @@ template <typename T> void singly_linked_list<T>::remove(int index) {
     pop_back();
   } else {
     singly_node<T> *temp = head;
-    for (int i = 0; i < index - 1; i++) {
+    for (int i = 0; i < index - 1; i++)
       temp = temp->next;
-    }
+
     singly_node<T> *node_to_delete = temp->next;
     temp->next = node_to_delete->next;
     delete node_to_delete;
@@ -110,7 +110,7 @@ template <typename T> bool singly_linked_list<T>::find(T value) {
   singly_node<T> *temp = head;
   while (temp != nullptr) {
     if (temp->data == value) {
-      return true; // Znaleziono element [cite: 502]
+      return true; // Znaleziono element
     }
     temp = temp->next;
   }
@@ -134,9 +134,4 @@ template <typename T> void singly_linked_list<T>::clear() {
 
 template <typename T> int singly_linked_list<T>::get_size() { return size; }
 
-// =========================================================================
-// JAWNA INSTANCJACJA SZABLONU (EXPLICIT INSTANTIATION)
-// Gwarantuje, że kompilator wygeneruje kod dla listy przechowującej int.
-// Bez tego miałbyś błędy linkera przy dzieleniu na .hpp i .cpp!
-// =========================================================================
 template class singly_linked_list<int>;

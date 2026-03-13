@@ -6,7 +6,7 @@ template <typename T> struct singly_node {
   T data;
   singly_node *next;
 
-  // Konstruktor pomocniczy dla wygody
+  // Konstruktor pomocniczy
   singly_node(T val) : data(val), next(nullptr) {}
 };
 
@@ -21,17 +21,17 @@ public:
   singly_linked_list();
   ~singly_linked_list() override;
 
-  // Operacje dodawania [cite: 498, 499, 500, 501]
+  // Operacje dodawania
   void push_front(T value) override;
   void push_back(T value) override;
   void insert(T value, int index) override;
 
-  // Operacje usuwania [cite: 498, 499, 500, 501]
+  // Operacje usuwania
   void pop_front() override;
   void pop_back() override;
   void remove(int index) override;
 
-  // Wyszukiwanie [cite: 502]
+  // Wyszukiwanie
   bool find(T value) override;
 
   // Metody pomocnicze
