@@ -2,24 +2,24 @@
 #include "IList.hpp"
 
 // Struktura pojedynczego węzła listy
-template <typename T> struct SinglyNode {
+template <typename T> struct singly_node {
   T data;
-  SinglyNode *next;
+  singly_node *next;
 
   // Konstruktor pomocniczy dla wygody
-  SinglyNode(T val) : data(val), next(nullptr) {}
+  singly_node(T val) : data(val), next(nullptr) {}
 };
 
 // Klasa listy jednokierunkowej dziedzicząca po IList
-template <typename T> class SinglyLinkedList : public IList<T> {
+template <typename T> class singly_linked_list : public IList<T> {
 private:
-  SinglyNode<T> *head; // Wskaźnik na początek
-  SinglyNode<T> *tail; // Wskaźnik na koniec
+  singly_node<T> *head; // Wskaźnik na początek
+  singly_node<T> *tail; // Wskaźnik na koniec
   int size;
 
 public:
-  SinglyLinkedList();
-  ~SinglyLinkedList() override;
+  singly_linked_list();
+  ~singly_linked_list() override;
 
   // Operacje dodawania [cite: 498, 499, 500, 501]
   void push_front(T value) override;
@@ -37,5 +37,5 @@ public:
   // Metody pomocnicze
   void display() override;
   void clear() override;
-  int getSize() override;
+  int get_size() override;
 };

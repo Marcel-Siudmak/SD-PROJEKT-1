@@ -1,39 +1,39 @@
-#include "SinglyLinkedList.hpp"
+#include "singly_linked_list.hpp"
 #include <iostream>
 
-template <typename T> SinglyLinkedList<T>::SinglyLinkedList() {
+template <typename T> singly_linked_list<T>::singly_linked_list() {
   head = nullptr;
   tail = nullptr;
   size = 0;
 }
 
-template <typename T> SinglyLinkedList<T>::~SinglyLinkedList() {
+template <typename T> singly_linked_list<T>::~singly_linked_list() {
   clear(); // Zwalniamy pamięć przy zniszczeniu obiektu
 }
 
-template <typename T> void SinglyLinkedList<T>::push_front(T value) {
-  SinglyNode<T> *newNode = new SinglyNode<T>(value);
+template <typename T> void singly_linked_list<T>::push_front(T value) {
+  singly_node<T> *new_node = new singly_node<T>(value);
   if (size == 0) {
-    head = tail = newNode;
+    head = tail = new_node;
   } else {
-    newNode->next = head;
-    head = newNode;
+    new_node->next = head;
+    head = new_node;
   }
   size++;
 }
 
-template <typename T> void SinglyLinkedList<T>::push_back(T value) {
-  SinglyNode<T> *newNode = new SinglyNode<T>(value);
+template <typename T> void singly_linked_list<T>::push_back(T value) {
+  singly_node<T> *new_node = new singly_node<T>(value);
   if (size == 0) {
-    head = tail = newNode;
+    head = tail = new_node;
   } else {
-    tail->next = newNode;
-    tail = newNode;
+    tail->next = new_node;
+    tail = new_node;
   }
   size++;
 }
 
-template <typename T> void SinglyLinkedList<T>::insert(T value, int index) {
+template <typename T> void singly_linked_list<T>::insert(T value, int index) {
   if (index < 0 || index > size)
     return; // Zabezpieczenie
 
@@ -42,23 +42,23 @@ template <typename T> void SinglyLinkedList<T>::insert(T value, int index) {
   } else if (index == size) {
     push_back(value);
   } else {
-    SinglyNode<T> *newNode = new SinglyNode<T>(value);
-    SinglyNode<T> *temp = head;
+    singly_node<T> *new_node = new singly_node<T>(value);
+    singly_node<T> *temp = head;
     // Przechodzimy do elementu przed miejscem wstawienia
     for (int i = 0; i < index - 1; i++) {
       temp = temp->next;
     }
-    newNode->next = temp->next;
-    temp->next = newNode;
+    new_node->next = temp->next;
+    temp->next = new_node;
     size++;
   }
 }
 
-template <typename T> void SinglyLinkedList<T>::pop_front() {
+template <typename T> void singly_linked_list<T>::pop_front() {
   if (size == 0)
     return;
 
-  SinglyNode<T> *temp = head;
+  singly_node<T> *temp = head;
   head = head->next;
   delete temp; // Ręczne zwalnianie pamięci
 
@@ -68,7 +68,7 @@ template <typename T> void SinglyLinkedList<T>::pop_front() {
   }
 }
 
-template <typename T> void SinglyLinkedList<T>::pop_back() {
+template <typename T> void singly_linked_list<T>::pop_back() {
   if (size == 0)
     return;
 
@@ -76,7 +76,7 @@ template <typename T> void SinglyLinkedList<T>::pop_back() {
     delete head;
     head = tail = nullptr;
   } else {
-    SinglyNode<T> *temp = head;
+    singly_node<T> *temp = head;
     // Szukamy przedostatniego elementu
     while (temp->next != tail) {
       temp = temp->next;
@@ -88,7 +88,7 @@ template <typename T> void SinglyLinkedList<T>::pop_back() {
   size--;
 }
 
-template <typename T> void SinglyLinkedList<T>::remove(int index) {
+template <typename T> void singly_linked_list<T>::remove(int index) {
   if (index < 0 || index >= size)
     return;
 
@@ -97,19 +97,19 @@ template <typename T> void SinglyLinkedList<T>::remove(int index) {
   } else if (index == size - 1) {
     pop_back();
   } else {
-    SinglyNode<T> *temp = head;
+    singly_node<T> *temp = head;
     for (int i = 0; i < index - 1; i++) {
       temp = temp->next;
     }
-    SinglyNode<T> *nodeToDelete = temp->next;
-    temp->next = nodeToDelete->next;
-    delete nodeToDelete;
+    singly_node<T> *node_to_delete = temp->next;
+    temp->next = node_to_delete->next;
+    delete node_to_delete;
     size--;
   }
 }
 
-template <typename T> bool SinglyLinkedList<T>::find(T value) {
-  SinglyNode<T> *temp = head;
+template <typename T> bool singly_linked_list<T>::find(T value) {
+  singly_node<T> *temp = head;
   while (temp != nullptr) {
     if (temp->data == value) {
       return true; // Znaleziono element [cite: 502]
@@ -119,8 +119,8 @@ template <typename T> bool SinglyLinkedList<T>::find(T value) {
   return false; // Nie znaleziono
 }
 
-template <typename T> void SinglyLinkedList<T>::display() {
-  SinglyNode<T> *temp = head;
+template <typename T> void singly_linked_list<T>::display() {
+  singly_node<T> *temp = head;
   while (temp != nullptr) {
     std::cout << temp->data << " -> ";
     temp = temp->next;
@@ -128,17 +128,17 @@ template <typename T> void SinglyLinkedList<T>::display() {
   std::cout << "NULL\n";
 }
 
-template <typename T> void SinglyLinkedList<T>::clear() {
+template <typename T> void singly_linked_list<T>::clear() {
   while (size > 0) {
     pop_front(); // Zwalnia pamięć węzeł po węźle
   }
 }
 
-template <typename T> int SinglyLinkedList<T>::getSize() { return size; }
+template <typename T> int singly_linked_list<T>::get_size() { return size; }
 
 // =========================================================================
 // JAWNA INSTANCJACJA SZABLONU (EXPLICIT INSTANTIATION)
 // Gwarantuje, że kompilator wygeneruje kod dla listy przechowującej int.
 // Bez tego miałbyś błędy linkera przy dzieleniu na .hpp i .cpp!
 // =========================================================================
-template class SinglyLinkedList<int>;
+template class singly_linked_list<int>;
