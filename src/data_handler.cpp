@@ -79,6 +79,12 @@ std::vector<int> data_set::get_data(const std::string &test_file,
   return data;
 }
 
+unsigned int data_set::get_file_seed(const std::string &test_file) const {
+  // Nazwa pliku to "<seed>.txt", np. "3748291234.txt"
+  fs::path p(test_file);
+  return static_cast<unsigned int>(std::stoul(p.stem().string()));
+}
+
 void data_handler::generate_dataset(const std::string &dataset_name,
                                     const std::vector<int> &points,
                                     int num_files, unsigned int main_seed) {
@@ -122,7 +128,9 @@ void data_handler::generate_dataset(const std::string &dataset_name,
     }
 
     std::mt19937 file_rng(file_seed);
-    std::uniform_int_distribution<int> num_dist;
+    // Zakres [1, 999'999] — wartość 1'000'000 jest zarezerwowana jako unikalna
+    // wartość szukana przez operację find w benchmarku.
+    std::uniform_int_distribution<int> num_dist(1, 999'999);
 
     for (int j = 0; j < max_points; ++j) {
       data_file << num_dist(file_rng) << "\n";

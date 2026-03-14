@@ -18,6 +18,9 @@ public:
   std::vector<int> get_data(const std::string &test_file,
                             int num_elements) const;
 
+  // Parsuje seed z nazwy pliku (np. "3748291234.txt" → 3748291234)
+  unsigned int get_file_seed(const std::string &test_file) const;
+
   template <typename T>
   void load_to_list(const std::string &test_file, int num_elements,
                     IList<T> &list) const {
