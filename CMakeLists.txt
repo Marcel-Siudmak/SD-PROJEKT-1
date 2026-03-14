@@ -19,9 +19,10 @@ include_directories(src)
 # 6. Tworzenie pliku wykonywalnego
 add_executable(mini_projekt_1 ${SOURCES})
 
-# 7. Automatyczne kopiowanie folderu 'data' do folderu 'build'
-# Dzięki temu program zawsze znajdzie pliki tekstowe w folderze "data/" obok pliku .exe
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/data DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+# 7. Przekazanie do kodu C++ bezwzględnej ścieżki do głównego katalogu projektu
+# Dzięki temu program zawsze wie, gdzie utworzyć bazowe foldery 'data' i 'results', 
+# niezależnie od tego, z jakiego miejsca (np. z build/) został uruchomiony.
+target_compile_definitions(mini_projekt_1 PRIVATE PROJECT_ROOT_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
 
 # 8. Flagi ostrzeżeń (Warnings) - pomagają wyłapać błędy w kodzie na etapie kompilacji
 if(MSVC)

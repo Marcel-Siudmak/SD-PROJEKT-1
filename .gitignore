@@ -6,3 +6,5 @@
 *.dll
 *.so
 *.class
+*.csv
+*.txt
