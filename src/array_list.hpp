@@ -1,19 +1,19 @@
 #pragma once
 #include "IList.hpp"
 
-class ArrayList : public IList<int> {
+class array_list : public IList<int> {
     private:
         int* _arr;
         int _size;
         int _capacity;
     public:
-        ArrayList(){};
-        ArrayList(int cap){};
-        ArrayList(const ArrayList& other){};
-        ArrayList(const ArrayList& other, int cap){};
-        ~ArrayList();
+        array_list(){};
+        array_list(int cap){};
+        array_list(const array_list& other){};
+        array_list(const array_list& other, int cap){};
+        ~array_list();
 
-        ArrayList& operator=(const ArrayList& other){};
+        array_list& operator=(const array_list& other){};
         
         void push_front(int value) override = 0;
         void push_back(int value) override = 0;
@@ -27,5 +27,5 @@ class ArrayList : public IList<int> {
 
         void display() override = 0;
         void clear() override = 0;
-        int getSize() override = 0;
+        int get_size() override = 0;
 };
