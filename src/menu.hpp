@@ -9,19 +9,20 @@
 class menu{
 private:
     IList<int>* _type;
-    std::string _dataset_name;
+    std::string _dataset_name, _list_type;
     std::vector<int> _points;
     int _num_files;
     unsigned int _main_seed;
 public:
-    menu() : _type(nullptr), _dataset_name("benchmark_test_dataset"), _points({1000, 2000, 4000, 8000, 16000, 32000, 64000, 128000, 256000, 512000}), _num_files(100), _main_seed(42) {};
+    menu() : _type(nullptr), _dataset_name("benchmark_test_dataset"), _list_type("singly_linked_list"), _points({1000, 2000, 4000, 8000, 16000, 32000, 64000, 128000, 256000, 512000}), _num_files(100), _main_seed(42) {};
     void display_menu(){
         std::cout << "1. Choose List Type:\n";
-        std::cout << "2. Generate/Rebuild Dataset.\n ";
-        std::cout << "3. Choose Benchmark parameters.\n ";
-        std::cout << "4. Run Benchmarks\n";
-        std::cout << "5. Manual Mode\n";
-        std::cout << "6. Exit\n";
+        std::cout << "2. Choose dataset.\n";
+        std::cout << "3. Generate/Rebuild Dataset.\n";
+        std::cout << "4. Choose Benchmark parameters.\n";
+        std::cout << "5. Run Benchmarks\n";
+        std::cout << "6. Manual Mode\n";
+        std::cout << "7. Exit\n";
     }
     void choose_list_type(){
         int choice;
@@ -33,19 +34,20 @@ public:
         switch (choice) {
             case 1:
                 _type = new singly_linked_list<int>();
-                _dataset_name = "singly_linked_list";
+                _list_type = "singly_linked_list";
                 break;
             case 2:
                 _type = new doubly_linked_list<int>();
-                _dataset_name = "doubly_linked_list";
+                _list_type = "doubly_linked_list";
                 break;
             case 3:
                 _type = new array_list<int>();
-                _dataset_name = "array_list";
+                _list_type = "array_list";
                 break;
             default:
                 std::cout << "Invalid choice. Defaulting to Singly Linked List.\n";
                 _type = new singly_linked_list<int>();
+                _list_type = "singly_linked_list";
         }
     }
     void generate_dataset(){
@@ -58,14 +60,14 @@ public:
         std::cout << "\nInitializing benchmark suite for '" << _dataset_name
             << "'...\n";
         benchmark bench(_dataset_name);
-        std::cout << "\nRunning Tests for " << _dataset_name << "...\n";
-        if(_dataset_name == "singly_linked_list"){
+        std::cout << "\nRunning Tests for " << _dataset_name <<" "<< _list_type <<"...\n";
+        if(_list_type == "singly_linked_list"){
             bench.run_structure_tests<singly_linked_list<int>>(
                 "singly_linked_list", []() { return new singly_linked_list<int>(); });
-        } else if(_dataset_name == "doubly_linked_list"){
+        } else if(_list_type == "doubly_linked_list"){
             bench.run_structure_tests<doubly_linked_list<int>>(
                 "doubly_linked_list", []() { return new doubly_linked_list<int>(); });
-        } else if(_dataset_name == "array_list"){
+        } else if(_list_type == "array_list"){
             bench.run_structure_tests<array_list<int>>(
                 "array_list", []() { return new array_list<int>(); });
         }
@@ -164,18 +166,23 @@ public:
                     choose_list_type();
                     break;
                 case 2:
-                    generate_dataset();
+                    std::cout << "Current dataset: " << _dataset_name << "\n";
+                    std::cout << "Enter new dataset name: ";
+                    std::cin >> _dataset_name;
                     break;
                 case 3:
-                    parameters();
+                    generate_dataset();
                     break;
                 case 4:
-                    run_benchmarks();
+                    parameters();
                     break;
                 case 5:
-                    manual_mode();
+                    run_benchmarks();
                     break;
                 case 6:
+                    manual_mode();
+                    break;
+                case 7:
                     std::cout << "Exiting...\n";
                     return;
                 default:
