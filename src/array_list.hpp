@@ -17,17 +17,17 @@ class array_list : public IList<T> {
 
         array_list& operator=(const array_list& other){};
         
-        void push_front(T value) override = 0;
-        void push_back(T value) override = 0;
-        void insert(T value, int index) override = 0;
+        void push_front(T value) override;
+        void push_back(T value) override;
+        void insert(T value, int index) override;
 
-        void pop_front() override = 0;
-        void pop_back() override = 0;
-        void remove(int index) override = 0;
+        void pop_front() override;
+        void pop_back() override;
+        void remove(int index) override;
 
-        bool find(T value) override = 0;
+        bool find(T value) override;
 
-        void display() override = 0;
-        void clear() override = 0;
-        int get_size() override = 0;
+        void display() override;
+        void clear() override;
+        int get_size() override;
 };

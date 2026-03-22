@@ -2,6 +2,7 @@
 #include "data_handler.hpp"
 #include "doubly_linked_list.hpp"
 #include "singly_linked_list.hpp"
+#include "array_list.hpp"
 #include <iostream>
 
 int main() {
@@ -30,6 +31,10 @@ int main() {
   bench.run_structure_tests<doubly_linked_list<int>>(
       "doubly_linked_list", []() { return new doubly_linked_list<int>(); });
 
+
+  std::cout<< "\n[3] Running Tests for ArrayList...\n";
+  bench.run_structure_tests<array_list<int>>(
+        "array_list", []() { return new array_list<int>(); });
   std::cout
       << "\n[4] Benchmarks finished successfully. Results saved to results/"
       << dataset_name << "/\n";
