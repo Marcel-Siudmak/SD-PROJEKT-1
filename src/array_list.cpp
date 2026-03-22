@@ -50,7 +50,7 @@ template <typename T>
 void array_list<T>::display(){
 
     for(int i = 0; i < _size; i++){
-        std::cout << '[' << _arr[i] << '] ';
+        std::cout << "[" << _arr[i] << "] ";
         (i+1) % 10 == 0 ? std::cout << std::endl : std::cout << "";
     }
     std::cout << std::endl;
