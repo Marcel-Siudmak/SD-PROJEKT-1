@@ -7,15 +7,15 @@ class array_list : public IList<T> {
         T* _arr;
         int _size;
         int _capacity;
-        void resize(int new_capacity){};
+        void resize(int new_capacity);
     public:
-        array_list(){};
-        array_list(int cap){};
-        array_list(const array_list& other){};
-        array_list(const array_list& other, int cap){};
+        array_list();
+        array_list(int cap);
+        array_list(const array_list& other);
+        array_list(const array_list& other, int cap);
         ~array_list();
 
-        array_list& operator=(const array_list& other){};
+        array_list& operator=(const array_list& other);
         
         void push_front(T value) override;
         void push_back(T value) override;

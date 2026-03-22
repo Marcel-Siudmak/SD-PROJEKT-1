@@ -117,3 +117,10 @@ bool array_list<T>::find(T value){
     }
     return false;
 }
+template <typename T>
+int array_list<T>::get_size(){
+    return _size;
+}
+
+// Explicit template instantiation
+template class array_list<int>;
