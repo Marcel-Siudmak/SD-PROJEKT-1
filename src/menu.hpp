@@ -104,6 +104,7 @@ public:
             std::cout << "7. Find Value\n";
             std::cout << "8. Display List\n";
             std::cout << "9. Check Size\n";
+            std::cout << "10. Clear List\n";
             std::cout << "0. Exit Manual Mode\n";
             std::cin >> choice;
             if(choice == 0) break;
@@ -150,6 +151,11 @@ public:
                 case 9:
                     std::cout << "List size: " << _type->get_size() << "\n";
                     break;
+                case 10:
+                    _type->clear();
+                    std::cout << "List cleared.\n";
+                    break;
+
                 default:
                     std::cout << "Invalid choice.\n";
             }
